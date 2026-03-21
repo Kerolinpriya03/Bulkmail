@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://grand-gnome-569046.netlify.app",
+    origin:["https://grand-gnome-569046.netlify.app","https://sweet-croquembouche-273ac4.netlify.app"],
     credentials: true,
   })
 );
