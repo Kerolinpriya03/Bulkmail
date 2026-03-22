@@ -10,6 +10,7 @@ const app = express();   // ✅ MUST BE HERE (before using app)
 app.use(
   cors({
     origin: [
+      "https://glistening-malasada-8d4273.netlify.app",
       "https://grand-gnome-569046.netlify.app",
       "https://sweet-croquembouche-273ac4.netlify.app"
     ],
