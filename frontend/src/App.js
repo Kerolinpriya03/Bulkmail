@@ -46,7 +46,9 @@ export default function App() {
           recipients: emails.split(","),
         },
         {
-          headers: { Authorization: token },
+          headers: { 
+  Authorization: `Bearer ${token}` 
+}
         }
       );
       setMessage(res.data.message);
