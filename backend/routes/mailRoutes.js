@@ -7,6 +7,9 @@ const router = express.Router();
 
 router.post("/send", auth, async (req, res) => {
   const { subject, body, recipients } = req.body;
+  const emailList = Array.isArray(recipients)
+  ? recipients
+  : recipients.split(",").map(e => e.trim());
 
   try {
     const transporter = nodemailer.createTransport({
@@ -17,14 +20,14 @@ router.post("/send", auth, async (req, res) => {
       },
     });
 
-    for (let email of recipients) {
-      await transporter.sendMail({
-        from: process.env.EMAIL,
-        to: email,
-        subject,
-        text: body,
-      });
-    }
+    for (let email of emailList) {
+  await transporter.sendMail({
+    from: process.env.EMAIL,
+    to: email,
+    subject,
+    text: body,
+  });
+}
 
     await Mail.create({
       subject,
